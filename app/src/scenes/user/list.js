@@ -87,6 +87,7 @@ const NewList = () => {
 
 const Create = () => {
   const [open, setOpen] = useState(false);
+  const [name] = useState('');
 
   const history = useHistory();
 
@@ -105,11 +106,11 @@ const Create = () => {
               e.stopPropagation();
             }}>
             <Formik
-              initialValues={{}}
+              initialValues={{username: 'username1', email: '', password:''}}
               onSubmit={async (values, { setSubmitting }) => {
                 try {
                   values.status = "active";
-                  values.availability = "not available";
+                  values.availability = "available"; // "not available"
                   values.role = "ADMIN";
                   const res = await api.post("/user", values);
                   if (!res.ok) throw res;

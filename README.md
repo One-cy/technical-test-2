@@ -42,12 +42,15 @@ Send us the project and answer to those simple questions :
     Solution : check if component is mounted, and I used useRef()
 
   - 2. Name input is disabled
-  Solution : change to enabled
+  Solution : changed to enabled="true"
   
   - 3. The Update button was not triggered because a onChange was iused instead of a onClick, and is was not specified as type="button" 
   Solution : I used onClick, and added type="button" in the HTML tag
-  <!-- - 3. A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa).
-  Solution : -->
+  
+  - 4. On each input of the New user dialog box: "A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa)."
+  Solution : I had to set default values for each field to set a default type, that way React knows which type to expect : 
+             > initialValues={{username: '', email: '', password:''}}
+  I also changed the default availability from 'not available' to 'available' tocheck if it was working.
 
 2.
 - Which feature did you develop and why ? 
