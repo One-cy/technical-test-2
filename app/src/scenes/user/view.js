@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import toast from "react-hot-toast";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -10,11 +10,20 @@ import api from "../../services/api";
 export default () => {
   const [user, setUser] = useState(null);
   const { id } = useParams();
+  // suivre le chargement du composant
+  const isMounted = useRef(true)
+
   useEffect(() => {
     (async () => {
       const response = await api.get(`/user/${id}`);
-      setUser(response.data);
+      if(isMounted.current) {
+        setUser(response.data);
+      }
     })();
+
+    return () => {
+      isMounted.current = false;
+    }
   }, []);
 
   if (!user) return <Loader />;
@@ -60,7 +69,7 @@ const Detail = ({ user }) => {
                 <input
                   className="projectsInput text-[14px] font-normal text-[#212325] bg-[#F9FBFD] rounded-[10px]"
                   name="name"
-                  disabled
+                  enabled
                   value={values.name}
                   onChange={handleChange}
                 />
@@ -132,7 +141,7 @@ const Detail = ({ user }) => {
             </div>
 
             <div className="flex  mt-2">
-              <LoadingButton className="bg-[#0560FD] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]" loading={isSubmitting} onChange={handleSubmit}>
+              <LoadingButton className="bg-[#0560FD] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]" loading={isSubmitting} onClick={handleSubmit} type="button" >
                 Update
               </LoadingButton>
               <button className="ml-[10px] bg-[#F43F5E] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]" onClick={deleteData}>

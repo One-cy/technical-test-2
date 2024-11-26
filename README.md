@@ -38,6 +38,18 @@ Time to be creative, and efficient. Do what you think would be the best for your
 
 Send us the project and answer to those simple questions : 
 - What bugs did you find ? How did you solve these and why ? 
+  - 1. Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+    Solution : check if component is mounted, and I used useRef()
+
+  - 2. Name input is disabled
+  Solution : change to enabled
+  
+  - 3. The Update button was not triggered because a onChange was iused instead of a onClick, and is was not specified as type="button" 
+  Solution : I used onClick, and added type="button" in the HTML tag
+  <!-- - 3. A component is changing an uncontrolled input of type undefined to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa).
+  Solution : -->
+
+2.
 - Which feature did you develop and why ? 
 - Do you have any feedback about the code / architecture of the project and what was the difficulty you encountered while doing it ? 
 
