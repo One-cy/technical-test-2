@@ -162,7 +162,8 @@ const Create = ({ onChangeSearch }) => {
                     <LoadingButton
                       className="mt-[1rem] bg-[#0560FD] text-[16px] font-medium text-[#FFFFFF] py-[12px] px-[22px] rounded-[10px]"
                       loading={isSubmitting}
-                      onClick={handleSubmit}>
+                      onClick={handleSubmit}
+                      type="button" >
                       Create
                     </LoadingButton>
                   </div>

@@ -52,7 +52,20 @@ Send us the project and answer to those simple questions :
              > initialValues={{username: '', email: '', password:''}}
   I also changed the default availability from 'not available' to 'available' tocheck if it was working.
 
+  - 5. Missing type for new project form on "Create" button (same solution as point 3)
+
+  - 6. project.name undefined : cause a crash from dev tool
+   Solution :  dans le span : {project.name?.toString()||'[find a project name]'}
+
+  - 7. Errorwhen accessing project Edit : error 500
+    solution : in api/src/controllers/project.js : 
+  at line 22 : changed find to findOne
+
+  - 8. temps dépassé pour d'autres bugs...
+
 2.
 - Which feature did you develop and why ? 
-- Do you have any feedback about the code / architecture of the project and what was the difficulty you encountered while doing it ? 
+Corrections mineures
 
+- Do you have any feedback about the code / architecture of the project and what was the difficulty you encountered while doing it ? 
+Very well organised code, as I has no problem finding files based on the console errors
